@@ -9,8 +9,8 @@ pool:
 
 resources:
   pipelines:
-  - pipeline: azuredevopsusermeme
-    source: azuredevopsusermeme.JPetstore
+  - pipeline: azuredevopsusermeme.JPetstoreCI
+    source: azuredevopsusermeme.JPetstoreCI
     branch: gh-pages
     trigger:
       branches:
