@@ -17,11 +17,20 @@ resources:
         include:
         - gh-pages
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+- stage: FunctionalTest
+  displayName: "Functional Test Stage"
+  jobs:
+  - job: FunctionalTestJob
+    steps:
+    - script: echo "Running functional tests"
+      displayName: "Run Functional Tests"
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- stage: AcceptanceTest
+  displayName: "Acceptance Test Stage"
+  dependsOn: FunctionalTest
+  jobs:
+  - job: AcceptanceTestJob
+    steps:
+    - script: echo "Running acceptance tests"
+      displayName: "Run Acceptance Tests"
